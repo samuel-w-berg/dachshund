@@ -6,8 +6,12 @@ from .models import Rock
 
 
 def home(request):
-  return HttpResponse('<h1>Hello World!</h1>')
+  return render(request, 'home.html')
 
 def rocks_index(request):
-    rocks = Rock.objects.all()
-    return render(request, 'rocks/index.html', {'rocks':rocks})
+  rocks = Rock.objects.all()
+  return render(request, 'rocks/index.html', {'rocks':rocks})
+
+def rocks_detail(request, rock_id):
+   rock = Rock.objects.get(id=rock_id)
+   return render(request, 'rocks/detail.html', {'rock': rock})
