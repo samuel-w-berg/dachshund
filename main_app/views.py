@@ -1,8 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 from .models import Rock
 
+
+class RockCreate(CreateView):
+  model = Rock
+  fields = '__all__'
 
 
 def home(request):
