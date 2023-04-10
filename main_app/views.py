@@ -18,3 +18,6 @@ rocks = [
 
 def home(request):
   return HttpResponse('<h1>Hello World!</h1>')
+
+def rocks_index(request):
+    return render(request, 'rocks/index.html', {'rocks':rocks})
