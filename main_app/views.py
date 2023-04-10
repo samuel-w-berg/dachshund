@@ -10,6 +10,16 @@ class RockCreate(CreateView):
   fields = '__all__'
 
 
+class RockUpdate(UpdateView):
+  model = Rock
+  fields = ['type', 'description']
+
+
+class RockDelete(DeleteView):
+  model = Rock
+  success_url = '/rocks/'
+
+
 def home(request):
   return render(request, 'home.html')
 
