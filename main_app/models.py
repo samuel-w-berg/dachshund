@@ -21,3 +21,6 @@ class Observation(models.Model):
 
     def __str__(self):
         return f"Date: {self.date}, Observation: {self.observation}"
+    
+    class Meta:
+        ordering = ['-date']
