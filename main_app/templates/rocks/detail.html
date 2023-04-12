@@ -38,6 +38,50 @@
     </table>
   </div>
 </div>
+<!-- This is all new markup to be added just above the <script> tag -->
+  <hr>
+  <div class="row">
+    <div class="col s6">
+      <h3>{{ rock.name }}'s Minerals</h3>
+      {% if rock.minerals.count %}
+        {% for m in rock.minerals.all %}
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">
+                {{ m.name }}
+              </span>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <h5>No Minerals</h5>
+      {% endif %}
+    </div>
+    <!-- Available toys will come after this line -->
+    <div class="col s6">
+      <h3>Available Minerals</h3>
+      {% if minerals.count %}
+        {% for m in minerals.all %}
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">
+                {{ m.name }}
+              </span>
+            </div>
+            <div class="card-action">
+              <form action="{% url 'assoc_mineral' rock.id m.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn">Add</button>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <h5>{{rock.name}} Already Has Complete Mineralogical Makeup</h5>
+      {% endif %}
+    </div>
+  </div>
+  
 
 <script>
 
